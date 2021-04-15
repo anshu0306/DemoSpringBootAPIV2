@@ -1,0 +1,71 @@
+put:
+  tags:
+  - update-bonus-bookingstatus
+  # Describe this verb here. Note: you can use markdown
+  summary: update the bonus point and accordingly change the status of booked hotel.
+  description: depending upon the userid's bonus point and change the status of booking and update the bonus points.
+  operationId: updateBonusBookingStatus
+  
+  parameters:
+    - in: header
+      name: Accept
+      in: header
+      description: Supported Content Type- application/json
+      schema:
+        type: string
+        pattern : application/json
+      required: true
+    
+    - in: path
+      description: Provides the userId who wants to do the bookings
+      name: userId
+      required: true
+      schema:
+        type: string
+        format : "User1"
+        
+    - in: path
+      description: Provides the hotelId for which booking request has been raised
+      name: bonusPoints 
+      required: true
+      schema:
+        type: integer
+        format : int32
+
+  # Expected responses for this operation:
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            items:
+              $ref : '#/components/schemas/Responsebody'      
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            items:
+              $ref : '#/components/schemas/Responsebody'
+    '400':
+      description: Bad request when the user do not pass the correct input or format
+      content:
+        application/json:
+          schema:
+            items:
+              $ref : '#/components/schemas/Responsebody'
+              
+components:
+  schemas:
+  
+    Responsebody: 
+      title: Responsebody
+      type: object
+      properties:
+        Status:
+          type: String
+          example: "Booked"
+        message:
+          type: string
+          example: "Status has been changed to booked"

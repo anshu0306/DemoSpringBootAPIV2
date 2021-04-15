@@ -1,0 +1,14 @@
+openapi: 3.0.3
+
+# This is your document metadataU.
+info:
+  version: 0.0.1
+  title: Hotel Booking API
+  description: 
+    API for Hotel Booking Operation.
+    
+paths:
+#  '/bookHotel/{hotelId}/{userId}':
+#  $ref: "./bookHotel/hotel-Booking-with-bonuspoints.yaml" 
+  '/addBonusUpdateStatus/{userId}/{bonusPoints}':  
+    $ref: "./bookHotel/update-Bonus-Points-status.yaml"
